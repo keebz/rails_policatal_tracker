@@ -12,9 +12,18 @@ class RepresentativesController < ApplicationController
 
 	def create
 		@representative = Representative.new(params[:representative])
-	    if @representative.save
-	      flash[:notice] = "You added a new representative!"
-	      redirect_to('/representatives')
+		@state = State.new(:name => params[:state])
+
+
+		if State.all.find_by(@state.name) && @representative.save
+			@current_state = State.all.find_by(@state.name)
+		   	@representative.state_id = @current_state.id
+		   	@representative.save
+		   	flash[:notice] = "You added a new representative!"
+	      	redirect_to('/representatives')
+	    elsif !@current_state = State.all.find_by(@state.name)
+	    	flash[:notice] = "State Does Not Exist. Add To Database."
+	    	redirect_to('/states')
 	    else
 	      flash[:notice] = "Something went wrong. Try again."
 	      render('representatives/new.html.erb')
@@ -35,7 +44,7 @@ class RepresentativesController < ApplicationController
 		@representative = Representative.find(params[:id])
 	    if @representative.update(params[:representative])
 	      flash[:notice] = "Representative updated."
-	      redirect_to('/representatives')
+	      redirect_to('/states/index.erb')
 	    else
 	      flash[:notice] = "Something went wrong. Try again."
 	      render('representatives/edit.html.erb')
