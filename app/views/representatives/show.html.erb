@@ -5,6 +5,14 @@
 
 <a href="/representatives/<%= @representative.id %>/edit"><button class='btn btn-primary'>Edit Representative</button></a>
 
+<br>
+<br>
+
+<p><a href="/representatives/<%= @representative.id %>"
+  data-confirm="Continue with delete?"
+  data-method="delete"
+  rel="nofollow"><button class='btn btn-danger'>Delete Representative</button></a></p>
+
 
 <p><a href="/representatives">Return to representative listing</a></p>
 </div>
