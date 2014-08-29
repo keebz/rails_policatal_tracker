@@ -21,4 +21,15 @@ class RepresentativesController < ApplicationController
 	    end
 	end
 
+	def edit
+		@representative = Representative.find(params[:id])
+		render('representatives/edit.html.erb')
+	end
+
+	def show
+		@representative = Representative.find(params[:id])
+    	render('representatives/show.html.erb')
+	end
+
+
 end

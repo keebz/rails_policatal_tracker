@@ -1,0 +1,29 @@
+<div class="container">
+<h1>Edit Representative</h1>
+
+<% if @representative.errors.any? %>
+  <h3>Please fix these errors:</h3>
+  <ul>
+    <% @representative.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+    <div class="col-sm-4">
+      <form class='form-group' action='/representatives/<%= @representative.id %>' method='post'>
+        <input name="_method" type="hidden" value="patch">
+
+        <label for="name">Representative Name</label>
+        <input class='form-control' type='text' name='representative[name]' value="<%= @representative.name %>">
+
+        <label for='party'>Party Affiliation</label>
+        <input class='form-control' type='text' name='representative[party]' value="<%= @representative.party %>">
+        <label for='state'>State</label>
+        <input class='form-control' type='text' name='state' value="<%= @representative.states %>">
+        <br>
+        <button class='btn btn-primary'>Add Representative</button>
+      </form>
+    </div>
+</div>
