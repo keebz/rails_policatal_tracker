@@ -1,3 +1,13 @@
+<% if @representative.errors.any? %>
+  <h3>Please fix these errors:</h3>
+  <ul>
+    <% @representative.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <div class="container">
 <h1>Add New Representative</h1>
     <div class="col-sm-4">
