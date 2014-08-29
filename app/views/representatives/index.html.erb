@@ -3,7 +3,7 @@
 
 <ul>
 	<% @representatives.each do |representative| %>
-		<li><%= representative.name %></li>
+		<li><a href="/representatives/<%= representative.id %>"><%= representative.name %></a></li>
 	<%end%>
 </ul>
 

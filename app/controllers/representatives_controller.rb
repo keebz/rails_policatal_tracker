@@ -23,7 +23,7 @@ class RepresentativesController < ApplicationController
 
 	def edit
 		@representative = Representative.find(params[:id])
-		render('representatives/edit.html.erb')
+		render("representatives/edit.html.erb")
 	end
 
 	def show
@@ -31,5 +31,15 @@ class RepresentativesController < ApplicationController
     	render('representatives/show.html.erb')
 	end
 
+	def update
+		@representative = Representative.find(params[:id])
+    if @representative.update(params[:representative])
+      flash[:notice] = "Representative updated."
+      redirect_to('/representatives')
+    else
+      flash[:notice] = "Something went wrong. Try again."
+      render('representatives/edit.html.erb')
+    end
 
+	end
 end
