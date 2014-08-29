@@ -6,6 +6,7 @@ class RepresentativesController < ApplicationController
 	end
 
 	def new
+		@representative = Representative.new
 		render('representatives/new.html.erb')
 	end
 
