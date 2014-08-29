@@ -44,7 +44,7 @@ class RepresentativesController < ApplicationController
 		@representative = Representative.find(params[:id])
 	    if @representative.update(params[:representative])
 	      flash[:notice] = "Representative updated."
-	      redirect_to('/states/index.erb')
+	      redirect_to('/')
 	    else
 	      flash[:notice] = "Something went wrong. Try again."
 	      render('representatives/edit.html.erb')
