@@ -1,0 +1,31 @@
+<div class="container">
+<h1> States:</h1>
+
+<div class="btn-group btn-group-xs">
+<ul>
+	<% @states.each do |state| %>
+		<li><%= state.name %>
+		<a href="/states/<%= state.id %>"
+		  data-confirm="Continue with delete?"
+		  data-method="delete"
+		  rel="nofollow">
+		  <button id= "button_space" class='btn btn-danger btn-xs'>Delete State</button>
+		</a></li>
+		<br>
+		<br>
+	<%end%>
+</ul>
+
+<h1>Add New State</h1>
+
+	    <div class="col-sm-6">
+	      <form class='form-group' action='/states' method='post'>
+	        
+	        <label for="name">State Initials</label>
+	        <input class='form-control' type='text' name='state[name]'>
+	        <br>
+	        <button class='btn btn-primary'>Add State</button>
+	      </form>
+	    </div>
+	</div>
+</div>

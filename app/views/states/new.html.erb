@@ -1,0 +1,22 @@
+<div class="container">
+<h1>Add New State</h1>
+
+<% if @state.errors.any? %>
+  <h3>Please fix these errors:</h3>
+  <ul>
+    <% @state.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+    <div class="col-sm-4">
+      <form class='form-group' action='/states' method='post'>
+        
+        <label for="name">State Name (Initials)</label>
+        <input class='form-control' type='text' name='state[name]'>
+        <br>
+        <button class='btn btn-primary'>Add Representative</button>
+      </form>
+    </div>
+</div>

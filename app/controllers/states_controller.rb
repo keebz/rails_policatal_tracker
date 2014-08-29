@@ -2,12 +2,13 @@ class StatesController < ApplicationController
 
 	def index
 		@states = State.all
+		@state = State.new(params[:state])
 		render('states/index.html.erb')
 	end
 
 	def new
 		@state = State.new
-		render('states/new.html.erb')
+		render('states/index.html.erb')
 	end
 
 	def create
@@ -16,29 +17,8 @@ class StatesController < ApplicationController
 	      flash[:notice] = "You added a new state!"
 	      redirect_to('/states')
 	    else
-	      flash[:notice] = "Something went wrong. Try again."
-	      render('states/new.html.erb')
-	    end
-	end
-
-	def edit
-		@state = State.find(params[:id])
-		render("states/edit.html.erb")
-	end
-
-	def show
-		@state = State.find(params[:id])
-    	render('states/show.html.erb')
-	end
-
-	def update
-		@state = State.find(params[:id])
-	    if @state.update(params[:state])
-	      flash[:notice] = "State updated."
+	      flash[:notice] = "You Didn't Enter A State! Try again."
 	      redirect_to('/states')
-	    else
-	      flash[:notice] = "Something went wrong. Try again."
-	      render('states/edit.html.erb')
 	    end
 	end
 
